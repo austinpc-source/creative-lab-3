@@ -1,0 +1,18 @@
+#options {
+    height: 200px;
+    overflow-y: scroll;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#playerOption {
+    display: block;
+}
+
+.object {
+    display: block;
+}
+
+.icon {
+    width: 30px;
+}

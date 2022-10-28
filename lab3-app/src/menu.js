@@ -4,17 +4,18 @@ import './handsigns.css';
 
 function SetImagePath(props) {
     let imagePath;
-    if (props.value === 16 || props.value === 38 || props.value === 39 || props.value === 53 ||
-        props.value === 63 || props.value === 64 || props.value === 75 || props.value === 86 ||
-        props.value === 95) {
-            imagePath = "./hand_images/" + props.value + ".gif";
+    if (props.value === 4 || props.value === 15 || props.value === 37 || props.value === 38 || 
+        props.value === 52 || props.value === 62 || props.value === 63 || props.value === 74 || 
+        props.value === 85 || props.value === 94) {
+            imagePath = "/hand_images/" + props.value + ".gif";
     } else {
-        imagePath = "./hand_images/" + props.value + ".png"
+        imagePath = "/hand_images/" + props.value + ".png"
     }
+    console.log(process.env.PUBLIC_URL);
     console.log(imagePath);
     
     return(
-        <img src={imagePath} alt="" className="icon"/>
+        <img src={process.env.PUBLIC_URL + imagePath} alt="" className="icon"/>
     );
 }
 

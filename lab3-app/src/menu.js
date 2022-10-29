@@ -1,6 +1,7 @@
 import React from 'react';
 //import test from './hand_images/1.png'
 import './handsigns.css';
+import './sidemenu.css';
 
 function SetImagePath(props) {
     let imagePath;
@@ -60,7 +61,7 @@ class Menu extends React.Component {
             </button>
         ); 
         return(
-            <div id="options">{signs}</div>
+            <div id={this.props.value}>{signs}</div>
         );
     }
 }

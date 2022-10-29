@@ -7,6 +7,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      menuStyle: props.value,
       object: "",
       results: []
     };
@@ -36,10 +37,11 @@ class App extends React.Component {
     return(
       <div>
       <p class="info"> Click on a sign below to find out which fellow signs it beats and/or loses to! </p>
-        <div>
-          <Menu onClick={this.handleSignSelection} />
+        <div id="page-format">
+          <Menu onClick={this.handleSignSelection} value="options-alt" />
+          <ul>{outcomes}</ul>
         </div>
-        <ul>{outcomes}</ul>
+        
       </div>
     );
   }

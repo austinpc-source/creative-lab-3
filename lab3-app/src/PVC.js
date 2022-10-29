@@ -103,7 +103,7 @@ class PVC extends React.Component {
         return(
             <div>
                 <p class="info"> Click on a sign below to fight against the computer and click play to see who wins! </p>
-                <Menu onClick={this.handleSignSelection} />
+                <Menu onClick={this.handleSignSelection} value="options" />
                 <div class="leftbox">
                     <p>Player chooses {this.state.p1Choice}</p>
                     <SetImagePath class="played-icon !important" value={this.state.p1ImageIndex} />

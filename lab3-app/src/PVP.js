@@ -95,7 +95,7 @@ class PVP extends React.Component {
         return(
             <div>
                 <p class="info"> Both players click on a sign below to fight each other and click play see who wins! </p>
-                <Menu onClick={this.handleSignSelection} />
+                <Menu onClick={this.handleSignSelection} value="options" />
                 <div class="leftbox">
                     <p>Player 1 chooses {this.state.p1Choice}</p>
                     <SetImagePath class="played-icon !important" value={this.state.p1ImageIndex} />

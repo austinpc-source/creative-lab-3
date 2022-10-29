@@ -42,9 +42,12 @@ class Display extends React.Component {
   render() {
     return(
       <div>
-        <button onClick={() => this.setInfo()}>Learn about handSigns</button>
-        <button onClick={() => this.setPVP()}>Play against a friend</button>
-        <button onClick={() => this.setPVC()}>Play against the computer</button>
+      <body>
+        <p class="welcome"> Welcome to 101 Signs! </p>
+        <button onClick={() => this.setInfo()}class="button-55">Learn about handSigns</button>
+        <button onClick={() => this.setPVP()} class="button-55">Play against a friend</button>
+        <button onClick={() => this.setPVC()} class="button-55">Play against the computer</button>
+      </body>
         {this.state.showInfo ? <App /> : null}
         {this.state.showPVP ? <PVP /> : null} 
         {this.state.showPVC ? <PVC /> : null} 

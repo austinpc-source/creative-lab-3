@@ -1,5 +1,5 @@
 import React from 'react';
-import Menu from './menu'
+import {Menu} from './menu'
 import './App.css';
 
 
@@ -14,7 +14,7 @@ class App extends React.Component {
     this.handleSignSelection = this.handleSignSelection.bind(this);
   }
   
-  handleSignSelection(event) {
+  handleSignSelection(event, index) {
         let url = "https://rps101.pythonanywhere.com/api/v1/objects/" + event.target.value;
         
         fetch(url)

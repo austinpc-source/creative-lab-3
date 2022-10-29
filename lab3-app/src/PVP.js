@@ -1,23 +1,6 @@
 import React from 'react';
-import Menu from './menu'
+import {Menu,SetImagePath} from './menu'
 import './handsigns.css';
-
-function SetImagePath(props) {
-    let imagePath;
-    if (props.value === 4 || props.value === 15 || props.value === 37 || props.value === 38 || 
-        props.value === 52 || props.value === 62 || props.value === 63 || props.value === 74 || 
-        props.value === 85 || props.value === 94) {
-            imagePath = "/hand_images/" + props.value + ".gif";
-    } else {
-        imagePath = "/hand_images/" + props.value + ".png"
-    }
-    console.log(process.env.PUBLIC_URL);
-    console.log(imagePath);
-    
-    return(
-        <img src={process.env.PUBLIC_URL + imagePath} alt="" className="played-icon"/>
-    );
-}
 
 function FetchButton(props) {
     return(
@@ -48,7 +31,9 @@ class PVP extends React.Component {
         this.state = {
             p1Turn: true,
             p1Choice: "",
+            p1ImageIndex: null,
             p2Choice: "",
+            p2ImageIndex: null,
             results: "",
         };
         
@@ -57,14 +42,16 @@ class PVP extends React.Component {
         this.clearPlayerChoice = this.clearPlayerChoice.bind(this);
     }
     
-    handleSignSelection(event) {
+    handleSignSelection(event, index) {
         if (this.state.p1Choice !== "" && this.state.p2Choice !== "") {
             return;
         }
         if(this.state.p1Turn) {
             this.setState({p1Choice: event.target.value});
+            this.setState({p1ImageIndex: index});
         } else {
             this.setState({p2Choice: event.target.value});
+            this.setState({p2ImageIndex: index});
         }
         this.setState({p1Turn: !this.state.p1Turn})
     }
@@ -84,7 +71,9 @@ class PVP extends React.Component {
     
     clearPlayerChoice() {
         this.setState({p1Choice: ""});
+        this.setState({p1ImageIndex: null});
         this.setState({p2Choice: ""});
+        this.setState({p2ImageIndex: null});
         this.setState({results: ""});
     }
     
@@ -109,11 +98,11 @@ class PVP extends React.Component {
                 <Menu onClick={this.handleSignSelection} />
                 <div class="leftbox">
                     <p>Player 1 chooses {this.state.p1Choice}</p>
-                    <SetImagePath class="played-icon !important" value={1} />
+                    <SetImagePath class="played-icon !important" value={this.state.p1ImageIndex} />
                 </div>
                 <div class="rightbox">
                     <p>Player 2 chooses {this.state.p2Choice}</p>
-                    <SetImagePath class="played-icon !important" value={1} />
+                    <SetImagePath class="played-icon !important" value={this.state.p2ImageIndex} />
                 </div>
                 <div class="middlebox">
                     <FetchButton onClick={this.fetchResults}/>

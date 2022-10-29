@@ -15,7 +15,7 @@ function SetImagePath(props) {
     console.log(imagePath);
     
     return(
-        <img src={process.env.PUBLIC_URL + imagePath} alt="" className="icon"/>
+        <img src={process.env.PUBLIC_URL + imagePath} alt="" className={props.className}/>
     );
 }
 
@@ -54,8 +54,8 @@ class Menu extends React.Component {
     
     render() {
         const signs = this.state.objects.map((signName, index) =>
-            <button className="object" value={signName.object} onClick={this.props.onClick} class="button-signs">
-                <SetImagePath value={index} />
+            <button className="object" value={signName.object} onClick={(event) => this.props.onClick(event, index)} class="button-signs">
+                <SetImagePath value={index} className="icon" />
                 {signName.object}
             </button>
         ); 
@@ -65,4 +65,4 @@ class Menu extends React.Component {
     }
 }
 
-export default Menu;
+export { Menu,SetImagePath };

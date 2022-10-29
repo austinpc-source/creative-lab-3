@@ -1,23 +1,6 @@
 import React from 'react';
-import Menu from './menu'
+import {Menu,SetImagePath} from './menu'
 import './handsigns.css';
-
-function SetImagePath(props) {
-    let imagePath;
-    if (props.value === 4 || props.value === 15 || props.value === 37 || props.value === 38 || 
-        props.value === 52 || props.value === 62 || props.value === 63 || props.value === 74 || 
-        props.value === 85 || props.value === 94) {
-            imagePath = "/hand_images/" + props.value + ".gif";
-    } else {
-        imagePath = "/hand_images/" + props.value + ".png"
-    }
-    console.log(process.env.PUBLIC_URL);
-    console.log(imagePath);
-    
-    return(
-        <img src={process.env.PUBLIC_URL + imagePath} alt="" className="played-icon"/>
-    );
-}
 
 function FetchButton(props) {
     return(
@@ -46,7 +29,9 @@ class PVC extends React.Component {
         super(props);
         this.state = {
             p1Choice: "",
+            p1ImageIndex: null,
             computerChoice: "",
+            computerImageIndex: null,
             results: "",
             objects: [{'object':'air'},{'object':'airplane'},{'object':'alien'},{'object':'axe'},{'object':'baby'},{'object':'beer'},{'object':'bicycle'},{'object':'bird'},{'object':'blood'},{'object':'book'},
                     {'object':'bowl'},{'object':'brain'},{'object':'butter'},{'object':'cage'},{'object':'camera'},{'object':'car'},{'object':'castle'},{'object':'cat'},{'object':'chain'},{'object':'chainsaw'},
@@ -67,8 +52,9 @@ class PVC extends React.Component {
         this.computerChoice = this.computerChoice.bind(this);
     }
     
-    handleSignSelection(event) {
+    handleSignSelection(event, index) {
         this.setState({p1Choice: event.target.value});
+        this.setState({p1ImageIndex: index});
         this.computerChoice();
     }
     
@@ -89,11 +75,14 @@ class PVC extends React.Component {
     computerChoice() {
         let index = Math.floor(Math.random() * 101);
         this.setState({computerChoice: this.state.objects[index].object});
+        this.setState({computerImageIndex: index});
     }
     
     clearPlayerChoice() {
         this.setState({p1Choice: ""});
+        this.setState({p1ImageIndex: null});
         this.setState({computerChoice: ""});
+        this.setState({computerImageIndex: null});
         this.setState({results: ""});
     }
     
@@ -116,12 +105,12 @@ class PVC extends React.Component {
                 <p class="info"> Click on a sign below to fight against the computer and click play to see who wins! </p>
                 <Menu onClick={this.handleSignSelection} />
                 <div class="leftbox">
-                    <p>Player 1 chooses {this.state.p1Choice}</p>
-                    <SetImagePath class="played-icon !important" value={1} />
+                    <p>Player chooses {this.state.p1Choice}</p>
+                    <SetImagePath class="played-icon !important" value={this.state.p1ImageIndex} />
                 </div>
                 <div class="rightbox">
                     <p>Computer chooses {this.state.computerChoice}</p>
-                    <SetImagePath class="played-icon !important" value={1} />
+                    <SetImagePath class="played-icon !important" value={this.state.computerImageIndex} />
                 </div>
                 <div class="middlebox">
                     <FetchButton onClick={this.fetchResults}/>

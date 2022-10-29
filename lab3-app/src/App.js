@@ -27,6 +27,7 @@ class App extends React.Component {
     }
   
   render() {
+    
     const outcomes = this.state.results.map((outcome) => 
       <li key={outcome[1]}>{this.state.object} {outcome[0]} {outcome[1]}</li>
     );
@@ -34,6 +35,7 @@ class App extends React.Component {
         
     return(
       <div>
+      <p class="info"> Click on a sign below to find out which fellow signs it beats and/or loses to! </p>
         <div>
           <Menu onClick={this.handleSignSelection} />
         </div>

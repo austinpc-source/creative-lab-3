@@ -54,7 +54,7 @@ class Menu extends React.Component {
     
     render() {
         const signs = this.state.objects.map((signName, index) =>
-            <button className="object" value={signName.object} onClick={this.props.onClick}>
+            <button className="object" value={signName.object} onClick={this.props.onClick} class="button-signs">
                 <SetImagePath value={index} />
                 {signName.object}
             </button>

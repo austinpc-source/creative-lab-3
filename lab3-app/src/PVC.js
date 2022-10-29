@@ -2,10 +2,26 @@ import React from 'react';
 import Menu from './menu'
 import './handsigns.css';
 
+function SetImagePath(props) {
+    let imagePath;
+    if (props.value === 4 || props.value === 15 || props.value === 37 || props.value === 38 || 
+        props.value === 52 || props.value === 62 || props.value === 63 || props.value === 74 || 
+        props.value === 85 || props.value === 94) {
+            imagePath = "/hand_images/" + props.value + ".gif";
+    } else {
+        imagePath = "/hand_images/" + props.value + ".png"
+    }
+    console.log(process.env.PUBLIC_URL);
+    console.log(imagePath);
+    
+    return(
+        <img src={process.env.PUBLIC_URL + imagePath} alt="" className="played-icon"/>
+    );
+}
 
 function FetchButton(props) {
     return(
-        <button className="fetch" onClick={props.onClick}>
+        <button className="fetch" onClick={props.onClick} class= "button-55">
             Play
         </button>
     );
@@ -13,7 +29,7 @@ function FetchButton(props) {
 
 function ClearButton(props) {
     return(
-        <button className="clear" onClick={props.onClick}>
+        <button className="clear" onClick={props.onClick}  class= "button-55">
             Clear
         </button>
     );
@@ -81,6 +97,7 @@ class PVC extends React.Component {
         this.setState({results: ""});
     }
     
+    
     render() {
         let status = "";
         let winner = "";
@@ -96,13 +113,22 @@ class PVC extends React.Component {
         
         return(
             <div>
+                <p class="info"> Click on a sign below to fight against the computer and click play to see who wins! </p>
                 <Menu onClick={this.handleSignSelection} />
-                <p>Player 1 choice: {this.state.p1Choice}</p>
-                <p>Computer choice: {this.state.computerChoice}</p>
-                <FetchButton onClick={this.fetchResults}/>
-                <ClearButton onClick={this.clearPlayerChoice}/>
-                <p>{status}</p>
-                <p>{winner}</p>
+                <div class="leftbox">
+                    <p>Player 1 chooses {this.state.p1Choice}</p>
+                    <SetImagePath class="played-icon !important" value={1} />
+                </div>
+                <div class="rightbox">
+                    <p>Computer chooses {this.state.computerChoice}</p>
+                    <SetImagePath class="played-icon !important" value={1} />
+                </div>
+                <div class="middlebox">
+                    <FetchButton onClick={this.fetchResults}/>
+                    <ClearButton onClick={this.clearPlayerChoice}/>
+                    <p>{status}</p>
+                    <p>{winner}</p>
+                </div>
             </div>
         );
     }

@@ -1,3 +1,9 @@
+body{
+  background-color: #ADD8E6;
+  display: block;
+  text-align: center;
+}
+
 .App {
   text-align: center;
 }
@@ -26,6 +32,17 @@
 
 .App-link {
   color: #61dafb;
+}
+
+ul{
+  font-family: "Montserrat";
+  text-align: center !important;
+  list-style: none;
+  margin-bottom: 5px;
+}
+
+li{
+  margin: 1em 0;
 }
 
 @keyframes App-logo-spin {

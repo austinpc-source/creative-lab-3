@@ -1,5 +1,5 @@
 #options {
-    height: 200px;
+    height: 275px;
     overflow-y: scroll;
     display: flex;
     flex-wrap: wrap;
@@ -9,6 +9,7 @@
     display: block;
 }
 
+
 .object {
     display: block;
 }
@@ -16,3 +17,53 @@
 .icon {
     width: 30px;
 }
+
+.played-icon {
+    width: 150px;
+}
+
+.leftbox {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+    justify-content: space-between;
+    float:left; 
+    width: 40%;
+    height:auto;
+    align-items: center;
+}
+
+p {
+    text-align: center !important;
+    justify-content: center !important;
+    font-family: "Montserrat";
+  font-size: 20px;
+  font-weight: normal;
+}
+
+.rightbox {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+    justify-content: space-between;
+    float:right; 
+    width: 40%;
+    height:auto;
+    align-items: center;
+}
+
+
+.middlebox {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+    justify-content: space-between;
+    float:center; 
+    width: 20%;
+    height:auto;
+    align-items: center;
+}
+
